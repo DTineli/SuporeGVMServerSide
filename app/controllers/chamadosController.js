@@ -5,7 +5,10 @@ exports.getChamados = (req, res, next) => {
 
     mysql.query("SELECT * FROM chamados WHERE finalizado = 'N' order by data_criacao asc", (err, result) => {
         if (err) {
-            res.status(500).json({ message: "ERRO ao conectar no bd" });
+            res.status(500).json({
+                message: "ERRO ao conectar no bd",
+                err: err
+            });
         } else {
             //console.log(result);
             res.send({
@@ -25,7 +28,7 @@ exports.postChamados = (req, res, next) => {
             if (err) {
                 console.log(err);
                 mysql.close();
-                res.status(500).json();
+                res.status(500).json({ err: err });
             } else {
                 mysql.close();
                 res.status(200).json();
