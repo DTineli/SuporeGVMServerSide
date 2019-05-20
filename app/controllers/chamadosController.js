@@ -50,5 +50,6 @@ exports.putChamado = (req, res, next) => {
                     result: result
                 });
             }
+            mysql.close();
         });
 }
