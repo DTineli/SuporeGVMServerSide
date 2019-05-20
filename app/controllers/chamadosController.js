@@ -17,7 +17,6 @@ exports.getChamados = (req, res, next) => {
         }
         mysql.close();
     });
-
 }
 
 exports.postChamados = (req, res, next) => {
@@ -38,7 +37,6 @@ exports.postChamados = (req, res, next) => {
 
 exports.putChamado = (req, res, next) => {
     const mysql = bd();
-
     mysql.query("UPDATE chamados SET finalizado = ?, data_finalizado = ? WHERE id = ?",
         [req.body.finalizado, req.body.data_finalizado, req.params.id],
         (err, result) => {
@@ -53,5 +51,4 @@ exports.putChamado = (req, res, next) => {
                 });
             }
         });
-
 }

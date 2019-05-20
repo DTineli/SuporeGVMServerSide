@@ -11,6 +11,4 @@ const conectaBd = () => {
     return con;
 }
 
-
-
 module.exports = conectaBd;
