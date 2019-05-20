@@ -35,3 +35,23 @@ exports.postChamados = (req, res, next) => {
             }
         });
 }
+
+exports.putChamado = (req, res, next) => {
+    const mysql = bd();
+
+    mysql.query("UPDATE chamados SET finalizado = ?, data_finalizado = ? WHERE id = ?",
+        [req.body.finalizado, req.body.data_finalizado, req.params.id],
+        (err, result) => {
+            if (err) {
+                res.status(500).json({
+                    message: "Erro ao atualizar chamado",
+                    err: err
+                });
+            } else {
+                res.status(200).json({
+                    result: result
+                });
+            }
+        });
+
+}

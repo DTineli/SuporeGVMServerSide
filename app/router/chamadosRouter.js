@@ -7,4 +7,6 @@ router.get('/', chamadosController.getChamados);
 
 router.post('/', chamadosController.postChamados);
 
+router.put('/:id', chamadosController.putChamado);
+
 module.exports = router;
