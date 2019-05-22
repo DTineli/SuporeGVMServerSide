@@ -3,7 +3,7 @@ const bd = require('../util/bd');
 exports.getChamados = (req, res, next) => {
     const mysql = bd();
 
-    mysql.query("SELECT empresa, nome, motivo, DATE_FORMAT(data_criacao, '%d/%m/%Y %H:%i:%s') as data_criacao FROM chamados WHERE finalizado = 'N' order by data_criacao asc", (err, result) => {
+    mysql.query("SELECT id, empresa, nome, motivo, DATE_FORMAT(data_criacao, '%d/%m/%Y %H:%i:%s') as data_criacao FROM chamados WHERE finalizado = 'N' order by data_criacao asc", (err, result) => {
         if (err) {
             res.status(500).json({
                 message: "ERRO ao conectar no bd",

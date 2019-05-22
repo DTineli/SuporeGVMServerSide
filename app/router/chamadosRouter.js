@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get('/', chamadosController.getChamados);
 
-router.post('/', chamadosController.postChamados);
+router.post('/:id', chamadosController.putChamado);
 
-router.put('/:id', chamadosController.putChamado);
+router.post('/', chamadosController.postChamados);
 
 module.exports = router;
