@@ -6,6 +6,5 @@ app.use(bodyParser.json());
 
 app.use('/chamado', require('./app/router/chamadosRouter'));
 
-app.listen(3000, () => {
-    console.log('server up ...');
-});
+const server = app.listen(3000);
+const io = require('./socket').init(server);
