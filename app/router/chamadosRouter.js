@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', chamadosController.getChamados);
 
-router.post('/:id', chamadosController.putChamado);
+router.put('/:id', chamadosController.putChamado);
 
 router.post('/', chamadosController.postChamados);
 

@@ -10,5 +10,8 @@ module.exports = {
             throw new Error('Socket.io not initialized!');
         }
         return io;
+    },
+    emitF: () => {
+        io.emit('finalizaAtendimento');
     }
 };

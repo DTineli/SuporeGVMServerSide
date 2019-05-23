@@ -1,4 +1,5 @@
 const bd = require('../util/bd');
+const io = require('../../socket');
 
 exports.getChamados = (req, res, next) => {
     const mysql = bd();
@@ -25,10 +26,10 @@ exports.postChamados = (req, res, next) => {
         [req.body.empresa, req.body.nome, req.body.motivo, new Date],
         (err, result) => {
             if (err) {
-                console.log(err);
                 mysql.close();
                 res.status(500).json({ err: err });
             } else {
+                io.getIO().emit('novoAtendimento');
                 mysql.close();
                 res.status(200).json();
             }
@@ -41,15 +42,18 @@ exports.putChamado = (req, res, next) => {
         [req.body.finalizado, req.body.data_finalizado, req.params.id],
         (err, result) => {
             if (err) {
+                mysql.close();
                 res.status(500).json({
                     message: "Erro ao atualizar chamado",
                     err: err
                 });
             } else {
+                io.emitF();
+                mysql.close();
                 res.status(200).json({
                     result: result
                 });
+
             }
-            mysql.close();
         });
 }
